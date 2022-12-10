@@ -26,9 +26,6 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ticket Booking App'),
-      ),
       body: Center(
         child: _widgetOptions[_selectedIndex],
       ),
