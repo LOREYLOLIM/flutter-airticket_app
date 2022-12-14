@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:ticket/utils/app_layout.dart';
 import 'package:ticket/utils/app_styles.dart';
 import 'package:ticket/widgets/ticktet_container.dart';
@@ -14,15 +15,16 @@ class TicketView extends StatelessWidget {
       height: 200,
       child: Container(
         decoration: const BoxDecoration(
-            color: Color(0xff5267799),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(21),
-              topRight: Radius.circular(21),
-            )),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(21),
+            topRight: Radius.circular(21),
+          ),
+        ),
         margin: const EdgeInsets.only(left: 16),
         child: Column(
           children: [
             Container(
+              color: const Color(0xff5267799),
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
@@ -36,34 +38,39 @@ class TicketView extends StatelessWidget {
                       const Spacer(),
                       ThickContainer(),
                       Expanded(
-                          child: Container(
-                        height: 24,
-                        child: LayoutBuilder(
-                          builder: (BuildContext context,
-                              BoxConstraints constraints) {
-                            return Flex(
-                              direction: Axis.horizontal,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: List.generate(
-                                (constraints.constrainWidth() / 6).floor(),
-                                (index) => SizedBox(
-                                  width: 3,
-                                  child: DecoratedBox(
-                                      decoration:
-                                          BoxDecoration(color: Colors.white)),
+                          child: Stack(children: [
+                        SizedBox(
+                          height: 24,
+                          child: LayoutBuilder(
+                            builder: (BuildContext context,
+                                BoxConstraints constraints) {
+                              return Flex(
+                                direction: Axis.horizontal,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: List.generate(
+                                  (constraints.constrainWidth() / 6).floor(),
+                                  (index) => SizedBox(
+                                    width: 3,
+                                    child: DecoratedBox(
+                                        decoration:
+                                            BoxDecoration(color: Colors.white)),
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
-                      )),
-                      Transform.rotate(
-                        angle: 1.5,
-                        child: Icon(
-                          Icons.local_airport_rounded,
-                          color: Colors.white,
+                        Center(
+                          child: Transform.rotate(
+                            angle: 1.5,
+                            child: Icon(
+                              Icons.local_airport_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      ),
+                      ])),
                       ThickContainer(),
                       const Spacer(),
                       Text(
@@ -72,10 +79,69 @@ class TicketView extends StatelessWidget {
                             Styles.headLineStyle3.copyWith(color: Colors.white),
                       )
                     ],
+                  ),
+                  const Gap(1),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        child: Text('New york',
+                            style: Styles.headLineStyle4
+                                .copyWith(color: Colors.white)),
+                      ),
+                      Text(
+                        "8 30M",
+                        style:
+                            Styles.headLineStyle4.copyWith(color: Colors.white),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        child: Text('London',
+                            textAlign: TextAlign.end,
+                            style: Styles.headLineStyle4
+                                .copyWith(color: Colors.white)),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              color: Styles.orangeColor,
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 20,
+                    width: 10,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10)))),
+                  ),
+                  Expanded(child: Container()),
+                  SizedBox(
+                    height: 20,
+                    width: 10,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)))),
                   )
                 ],
               ),
-            )
+            ),
+            Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(21),
+                      topRight: Radius.circular(21)),
+                ),
+                padding: const EdgeInsets.all(16)),
           ],
         ),
       ),
