@@ -31,7 +31,7 @@ class HotelScreen extends StatelessWidget {
           const Gap(10),
           Text(
             "Open space",
-            style: Styles.headLineStyle2.copyWith(color: Colors),
+            style: Styles.headLineStyle2,
           ),
         ],
       ),
